@@ -1,22 +1,28 @@
-#
+# Represents a stack.
+# Utilizes first in last out.
+# All operations are constant time
 class Stack
   attr_reader :size
 
+  # No arg Constructor
   def initialize
     @size = 0
     @head = nil
   end
 
+  # adds an item to the stack
   def push(element)
     @head = Node.new(element, @head)
     @size += 1
   end
 
+  # Returns the item at the top
   def top
     raise ArgumentError, 'NoSuchElementException' if @head.nil?
     @head.element
   end
 
+  # Returns the item at the top and removes it from the stack
   def pop
     raise ArgumentError, 'NoSuchElementException' if @head.nil?
     return_value = @head.element
@@ -25,13 +31,14 @@ class Stack
     return_value
   end
 
+  # Returns true if the stack is empty
   def empty?
     @size.zero?
   end
 
   private
 
-  #
+  # Represents a single node in a stack
   class Node
     attr_reader :element, :previous
     def initialize(element, previous = nil)
