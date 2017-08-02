@@ -6,8 +6,7 @@ class Stack
 
   # No arg Constructor
   def initialize
-    @size = 0
-    @head = nil
+    clear
   end
 
   # adds an item to the stack
@@ -29,6 +28,11 @@ class Stack
     @head = @head.previous
     @size -= 1
     return_value
+  end
+
+  def clear
+    @head = nil
+    @size = 0
   end
 
   # Returns true if the stack is empty
